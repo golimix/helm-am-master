@@ -44,6 +44,7 @@ jobs:
           cd repo
           helm package ../charts/*
           helm repo index .
+          cd ..
           
       - name: Move repo folder
         run: |
