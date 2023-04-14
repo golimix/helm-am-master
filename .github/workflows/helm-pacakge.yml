@@ -50,7 +50,7 @@ jobs:
         run: |
           pwd
           ls -lt
-          mv master/repo/*.tar.gz repo/
+          mv master/repo/* repo/
           cd repo
           git config user.email "coollimix@gmail.com"
           git config user.name "limix"
