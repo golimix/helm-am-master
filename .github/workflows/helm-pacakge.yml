@@ -43,5 +43,11 @@ jobs:
           wget https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz
           tar xvzf helm-v3.11.3-linux-amd64.tar.gz
           linux-amd64/helm package .
+  
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with: 
+          branch: gh-pages
+          package: .
           
 
