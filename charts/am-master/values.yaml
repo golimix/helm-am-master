@@ -43,22 +43,14 @@ configmap:
      master:
        owner: limix
        name: limix
-       center: 47.92.78.18:50080
-       ip: limix.limix.com
-       salt: http://limix.limix.com:18080
-       port: 8867
-     server:
-       host: 0.0.0.0
-       port: 8866
-       callback: http://172.31.96.54:8866
+       # 外部访问master的对应IP
+       ip: 192.168.64.1
+       # 外部访问master的对应Port
+       port: 8898
+       # 外部可访问的salt-api的地址
+       salt: http://192.168.64.10:8181
      database:
        type: sqlite
-     mysql:
-       host: 172.31.96.54
-       port: 3306
-       username: root
-       password: iflytek!
-       schema: appmanage2
      sqlite:
        name: "test.db"
      git:
@@ -68,11 +60,6 @@ configmap:
      filesystem:
        root: /srv/salt/
        script: /srv/salt/scripts
-     salt:
-       url: http://localhost:8181
-       username: root
-       password: root
-       eauth: auto
      security:
        casbin:
          model: /iflytek/server/master/security.conf
