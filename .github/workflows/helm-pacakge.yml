@@ -35,7 +35,7 @@ jobs:
           ref: 'repo'
           path: 'repo' 
       
-      - uses: azure/setup-helm@v1
+      - uses: azure/setup-helm@v3
       
       - name: Package helm package
         run: |
