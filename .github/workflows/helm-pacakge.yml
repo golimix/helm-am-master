@@ -48,6 +48,8 @@ jobs:
           
       - name: Move repo folder
         run: |
+          pwd
+          ls -lt
           mv master/repo/*.tar.gz repo/
           cd repo
           git config user.email "coollimix@gmail.com"
