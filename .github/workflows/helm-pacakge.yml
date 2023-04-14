@@ -27,18 +27,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
-            ref: 'master'
-            path: 'master'
-      
-      - uses: actions/checkout@v3
-        with:
           ref: 'repo'
           path: 'repo' 
-      
+          
+      - uses: actions/checkout@v3
+        with:
+            ref: 'master'
+            path: 'master'
+            
       - uses: azure/setup-helm@v3
       
       - name: Package helm package
         run: |
+          cd master
           mkdir -p repo
           cd repo
           helm package ../charts/*
