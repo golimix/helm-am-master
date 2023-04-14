@@ -22,5 +22,5 @@ metadata:
   labels:
     {{- include "helm-starter-base.labels" . | nindent 4 }}
 data:
-  master.yaml: {{ tpl .Values.configmap.master . | quote }}
+  master.yaml: {{ tpl .Values.configmap.master.yaml . | quote }}
 {{- end }}
