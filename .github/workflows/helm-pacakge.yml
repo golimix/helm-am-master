@@ -35,17 +35,18 @@ jobs:
           ref: 'repo'
           path: 'repo' 
       
-      - name: Helm Package
-        env:
-          HELM_VERSION: v3.11.3
+      - uses: azure/setup-helm@v1
+      
+      - name: Package helm package
         run: |
-          wget https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz
-          tar xvzf helm-v3.11.3-linux-amd64.tar.gz
-          linux-amd64/helm package master
+          mkdir -p repo
+          cd repo
+          helm package ../charts/*
+          helm repo index .
           
       - name: Move repo folder
         run: |
-          mv *.tar.gz repo/
+          mv master/repo/*.tar.gz repo/
           cd repo
           git config user.email "coollimix@gmail.com"
           git config user.name "limix"
