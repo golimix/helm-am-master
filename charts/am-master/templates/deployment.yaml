@@ -31,7 +31,7 @@ spec:
         configMap:
           name: {{ include "helm-starter-base.fullname" . }}        
           items:
-            - key: master.yaml
+            - key: master
               path: master.yaml
       containers:
         - name: {{ .Chart.Name }}
