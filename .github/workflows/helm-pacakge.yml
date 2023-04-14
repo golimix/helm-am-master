@@ -43,7 +43,7 @@ jobs:
           
       - name: Move repo folder
         run: |
-          mv master/*.tar.gz repo/
+          mv *.tar.gz repo/
           cd repo
           git config user.email "coollimix@gmail.com"
           git config user.name "limix"
