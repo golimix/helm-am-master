@@ -42,7 +42,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: config-master
-              mountPath: "/limix/server/master/"
+              mountPath: "/limix/server/master/master.yaml"
+              subPath: master.yaml
               readOnly: true
           ports:
             - name: http
