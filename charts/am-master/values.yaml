@@ -36,6 +36,47 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
+configmap:
+  master.yaml: |
+     name: limix
+     role: master
+     master:
+       owner: limix
+       name: limix
+       center: 47.92.78.18:50080
+       ip: limix.limix.com
+       salt: http://limix.limix.com:18080
+       port: 8867
+     server:
+       host: 0.0.0.0
+       port: 8866
+       callback: http://172.31.96.54:8866
+     database:
+       type: sqlite
+     mysql:
+       host: 172.31.96.54
+       port: 3306
+       username: root
+       password: iflytek!
+       schema: appmanage2
+     sqlite:
+       name: "test.db"
+     git:
+       url: http://git.limix.com:3030
+       token: 8ed1c72682aedfb13ac048d736bf553c901f7c45
+       localpath: /tmp/gin/projects/
+     filesystem:
+       root: /srv/salt/
+       script: /srv/salt/scripts
+     salt:
+       url: http://localhost:8181
+       username: root
+       password: root
+       eauth: auto
+     security:
+       casbin:
+         model: /iflytek/server/master/security.conf
+
 service:
   type: ClusterIP
   port: 80

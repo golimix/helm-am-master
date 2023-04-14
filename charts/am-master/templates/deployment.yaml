@@ -27,12 +27,22 @@ spec:
       serviceAccountName: {{ include "helm-starter-base.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        configMap:
+          name: {{ include "helm-starter-base.fullname" . }}        
+          items:
+            - key: master.yaml
+              path: master.yaml
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: config
+              mountPath: "/limix/server/master/"
+              readOnly: true
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
