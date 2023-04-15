@@ -43,10 +43,11 @@ configmap:
      master:
        owner: limix
        name: limix
+       center: 47.92.78.18:50080
        # 外部访问master的对应IP,例如:文件上传场景
-       ip: 192.168.64.1
+       ip: limix.limix.com
        # 外部访问master的对应Port
-       port: 8898
+       port: 80
        # 外部可访问的salt-api的地址
        salt: http://limix.limix.com:18080
      database:
@@ -58,7 +59,7 @@ configmap:
        token: 8ed1c72682aedfb13ac048d736bf553c901f7c45
        localpath: /limix/data/master/git
      salt:
-       url: http://192.168.64.10:8181
+       url: http://192.168.3.38:8181
        username: root
        password: root
        eauth: auto
