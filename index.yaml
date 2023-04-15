@@ -3,12 +3,12 @@ entries:
   am-master:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-15T07:09:20.634560443Z"
+    created: "2023-04-15T07:21:02.516178694Z"
     description: A Helm chart for Kubernetes
-    digest: 02bebe5bbfa50b3c91fc79c6b0caeac0963c139bbf680ee0c361c368bb8153ff
+    digest: c078bf315d0cb86bb84658c708a785a68b42dda8b2d3294ee481408709b4109d
     name: am-master
     type: application
     urls:
     - am-master-0.1.1.tgz
     version: 0.1.1
-generated: "2023-04-15T07:09:20.633481126Z"
+generated: "2023-04-15T07:21:02.515256448Z"
