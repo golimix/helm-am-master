@@ -43,26 +43,42 @@ configmap:
      master:
        owner: limix
        name: limix
-       # 外部访问master的对应IP
+       # 外部访问master的对应IP,例如:文件上传场景
        ip: 192.168.64.1
        # 外部访问master的对应Port
        port: 8898
        # 外部可访问的salt-api的地址
-       salt: http://192.168.64.10:8181
+       salt: http://limix.limix.com:18080
      database:
        type: sqlite
      sqlite:
-       name: "test.db"
+       name: "/limix/data/master/database/test.db"
      git:
        url: http://git.limix.com:3030
        token: 8ed1c72682aedfb13ac048d736bf553c901f7c45
-       localpath: /tmp/gin/projects/
+       localpath: /limix/data/master/git
+     salt:
+       url: http://192.168.64.10:8181
+       username: root
+       password: root
+       eauth: auto
      filesystem:
-       root: /srv/salt/
-       script: /srv/salt/scripts
+       root: /limix/data/master/filesystem
+       script: /limix/data/master/filesystem/scripts
      security:
        casbin:
-         model: /iflytek/server/master/security.conf
+         model: /limix/server/master/security.conf
+
+storage:
+  database:
+    class: local-path
+    size: 2G
+  git:
+    class: local-path
+    size: 2G
+  filesystem:
+    class: local-path
+    size: 2G
 
 service:
   type: ClusterIP

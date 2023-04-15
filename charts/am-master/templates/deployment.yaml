@@ -28,12 +28,21 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       volumes:
-        - name: config-master
+        - name: volume-{{ include "helm-starter-base.fullname" . }}-config
           configMap:
             name: {{ include "helm-starter-base.fullname" . }}        
             items:
               - key: master
                 path: master.yaml
+        - name: volume-{{ include "helm-starter-base.fullname" . }}-database
+          persistentVolumeClaim:
+            claimName: volume-{{include "helm-starter-base.fullname" . }}-database
+        - name: volume-{{ include "helm-starter-base.fullname" . }}-git
+          persistentVolumeClaim:
+            claimName: volume-{{include "helm-starter-base.fullname" . }}-git
+        - name: volume-{{ include "helm-starter-base.fullname" . }}-filesystem
+          persistentVolumeClaim:
+            claimName: volume-{{include "helm-starter-base.fullname" . }}-filesystem
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -41,10 +50,16 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-            - name: config-master
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-config
               mountPath: "/limix/server/master/master.yaml"
               subPath: master.yaml
               readOnly: true
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-database
+              mountPath: "/limix/data/master/database"
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-git
+              mountPath: "/limix/server/master/git"
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-filesystem
+              mountPath: "/limix/server/master/filesystem"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

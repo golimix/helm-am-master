@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume-{{ include "helm-starter-base.fullname" . }}-database
+  labels:
+    {{- include "helm-starter-base.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.storage.database.class }}
+  resources:
+    requests:
+      storage: {{ .Values.storage.database.size }}
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume-{{ include "helm-starter-base.fullname" . }}-git
+  labels:
+    {{- include "helm-starter-base.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.storage.git.class }}
+  resources:
+    requests:
+      storage: {{ .Values.storage.git.size }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: volume-{{ include "helm-starter-base.fullname" . }}-filesystem
+  labels:
+    {{- include "helm-starter-base.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.storage.filesystem.class }}
+  resources:
+    requests:
+      storage: {{ .Values.storage.filesystem.size }}
