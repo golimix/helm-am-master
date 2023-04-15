@@ -57,9 +57,9 @@ spec:
             - name: volume-{{ include "helm-starter-base.fullname" . }}-database
               mountPath: "/limix/data/master/database"
             - name: volume-{{ include "helm-starter-base.fullname" . }}-git
-              mountPath: "/limix/server/master/git"
+              mountPath: "/limix/data/master/git"
             - name: volume-{{ include "helm-starter-base.fullname" . }}-filesystem
-              mountPath: "/limix/server/master/filesystem"
+              mountPath: "/limix/data/master/filesystem"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
