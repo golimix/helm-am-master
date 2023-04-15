@@ -4,6 +4,8 @@ metadata:
   name: volume-{{ include "helm-starter-base.fullname" . }}-database
   labels:
     {{- include "helm-starter-base.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce
@@ -19,6 +21,8 @@ metadata:
   name: volume-{{ include "helm-starter-base.fullname" . }}-git
   labels:
     {{- include "helm-starter-base.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce
@@ -33,6 +37,8 @@ metadata:
   name: volume-{{ include "helm-starter-base.fullname" . }}-filesystem
   labels:
     {{- include "helm-starter-base.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/resource-policy": keep
 spec:
   accessModes:
     - ReadWriteOnce
