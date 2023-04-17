@@ -27,6 +27,13 @@ spec:
       serviceAccountName: {{ include "helm-starter-base.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: volume-{{ include "helm-starter-base.fullname" . }}-config
+          configMap:
+            name: {{ include "helm-starter-base.fullname" . }}        
+            items:
+              - key: master
+                path: master
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -47,6 +54,11 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-config
+              mountPath: "/etc/salt/master"
+              subPath: master
+              readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
