@@ -1,4 +1,4 @@
-{{- if .Values.configmap }}
+{{- if .Values.master }}
 {{- $master_confs := toYaml .Values.master | nindent 4 -}}
 apiVersion: v1
 kind: ConfigMap
