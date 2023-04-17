@@ -3,12 +3,23 @@ entries:
   am-master:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-15T15:15:16.594077108Z"
+    created: "2023-04-17T01:58:36.411128237Z"
     description: A Helm chart for Kubernetes
-    digest: 572bbfa2e65f03fc849479bab17b0600ab067e1382d1a38f36c34860956c2cc4
+    digest: 21881357f07ec5d69f6d02a32b24a162c7c1920a742c0e58add52a99922a8e4c
     name: am-master
     type: application
     urls:
     - am-master-0.1.1.tgz
     version: 0.1.1
-generated: "2023-04-15T15:15:16.592394992Z"
+  am-proxy:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-04-17T01:58:36.411741235Z"
+    description: A Helm chart for Kubernetes
+    digest: 3d8a5e64b02e522428114c118c6237ac9f50c885ea34bf6bde15c3cc6a24b9dc
+    name: am-proxy
+    type: application
+    urls:
+    - am-proxy-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-04-17T01:58:36.409886239Z"
