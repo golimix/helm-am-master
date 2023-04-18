@@ -44,8 +44,8 @@ spec:
             - name: tcp-pubsub
               containerPort: {{ .Values.service.pubsub.port }}
               protocol: TCP
-            - name: tcp-target
-              containerPort: {{ .Values.service.target.port }}
+            - name: tcp-return
+              containerPort: {{ .Values.service.return.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
