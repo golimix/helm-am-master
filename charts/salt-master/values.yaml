@@ -69,8 +69,15 @@ master:
     debug: False
 
 service:
-  type: ClusterIP
-  port: 80
+  type: NodePort
+  pubsub:
+    type: 
+    port: 4505
+    nodePort: 4505
+    protocol: TCP
+  return:
+    port: 4506
+
 
 ingress:
   enabled: false

@@ -25,6 +25,8 @@ helm upgrade -i am-proxy am/am-proxy -n limix-system
 ```bash
 docker build -t limix/salt-master:0.0.1 . --push
 helm upgrade -i salt-master salt/salt-master -n limix-system
+
+kubectl scale --replicas=1 deployment/salt-master
 ```
 
 # TODO
