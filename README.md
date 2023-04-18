@@ -20,6 +20,12 @@ helm create am-proxy --starter helm-starter-base
 helm upgrade -i am-proxy am/am-proxy -n limix-system
 ```
 
+# helm-salt-master
+
+```bash
+docker build -t limix/salt-master:0.0.1 . --push
+helm upgrade -i salt-master salt/salt-master -n limix-system
+```
 
 # TODO
 * helm包不需要暴露service端口的

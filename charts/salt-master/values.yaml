@@ -36,7 +36,7 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-owner: spark
+owner: limix
 
 master:
   roster: limix_roster
