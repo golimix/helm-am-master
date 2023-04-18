@@ -3,9 +3,9 @@ entries:
   am-master:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-18T08:18:18.201790986Z"
+    created: "2023-04-18T11:04:35.196342715Z"
     description: A Helm chart for Kubernetes
-    digest: 54ab3434a9a9d26ae1aa9271c37af145dfc89c6b272b6cddd107a7a5755bd934
+    digest: cb4e4aa12dd1fec38fe28e1a53e028f965cda621fba60a8e03a09cc204df0c83
     name: am-master
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   am-proxy:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-18T08:18:18.205217254Z"
+    created: "2023-04-18T11:04:35.196869832Z"
     description: A Helm chart for Kubernetes
-    digest: b149e1bccff8619303f768b51e9ec3296dd7572a5999a8c7ed16df5b56ebcc02
+    digest: 71c03e9e55ab3a608fd56e3ea82394057dc5710a97d41703452c02cd5e670a5b
     name: am-proxy
     type: application
     urls:
@@ -25,12 +25,12 @@ entries:
   salt-master:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2023-04-18T08:18:18.206828533Z"
+    created: "2023-04-18T11:04:35.197630855Z"
     description: A Helm chart for Kubernetes
-    digest: d33d36144c71ac8ee646eb5acad912177476959f08dd998a352f80d97adc133e
+    digest: 8d504696f9ae5f66c60c476eddef93dd058331ee5d0344e391776df10faf0539
     name: salt-master
     type: application
     urls:
     - salt-master-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-18T08:18:18.20084194Z"
+generated: "2023-04-18T11:04:35.195233081Z"
