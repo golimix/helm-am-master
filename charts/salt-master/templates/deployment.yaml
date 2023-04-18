@@ -43,11 +43,6 @@ spec:
           command:
             - "/limix/server/salt/run/run"
             - "master"
-            - "&"
-            - "d"
-            - "/limix/server/salt/run/run"
-            - "api"
-            - "-d"
           ports:
             - name: tcp-pubsub
               containerPort: {{ .Values.service.pubsub.port }}
