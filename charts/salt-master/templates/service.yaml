@@ -15,7 +15,7 @@ spec:
     - port: {{ .Values.service.return.port }}
       targetPort: {{ .Values.service.return.targetPort }}
       protocol: {{ .Values.service.return.protocol }}
-      nodePort: {{ .Values.service.pubsub.nodePort }}
+      nodePort: {{ .Values.service.return.nodePort }}
       name: tcp-return
     - port: {{ .Values.service.api.port }}
       targetPort: {{ .Values.service.api.targetPort }}
