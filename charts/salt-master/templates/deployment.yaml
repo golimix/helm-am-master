@@ -35,7 +35,7 @@ spec:
               - key: master
                 path: master
       containers:
-        - name: {{ .Chart.Name }}-master
+        - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -67,6 +67,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - "/limix/server/salt/run/run"
+            - "api"
           ports:
             - name: tcp-api
               containerPort: {{ .Values.service.api.port }}
@@ -85,7 +88,7 @@ spec:
             - name: volume-{{ include "helm-starter-base.fullname" . }}-config
               mountPath: "/etc/salt/master"
               subPath: master
-              readOnly: true 
+              readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
