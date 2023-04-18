@@ -71,13 +71,17 @@ master:
 service:
   type: NodePort
   pubsub:
-    type: 
     port: 4505
     nodePort: 4505
     protocol: TCP
   return:
     port: 4506
-
+    nodePort: 4506
+    protocol: TCP
+  api:
+    port: 8181
+    nodePort: 8181
+    protocol: TCP
 
 ingress:
   enabled: false

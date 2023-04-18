@@ -35,7 +35,7 @@ spec:
               - key: master
                 path: master
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}-master
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -62,6 +62,30 @@ spec:
               mountPath: "/etc/salt/master"
               subPath: master
               readOnly: true
+        - name: {{ .Chart.Name }}-api
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: tcp-api
+              containerPort: {{ .Values.service.api.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.api.port }}
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.service.api.port }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: volume-{{ include "helm-starter-base.fullname" . }}-config
+              mountPath: "/etc/salt/master"
+              subPath: master
+              readOnly: true 
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
