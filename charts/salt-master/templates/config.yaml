@@ -7,5 +7,5 @@ metadata:
   labels:
     {{- include "helm-starter-base.labels" . | nindent 4 }}
 data:
-  master: {{ tpl $master_confs . -}}
+  master: | {{ tpl $master_confs . -}}
 {{- end }}
