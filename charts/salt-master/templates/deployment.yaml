@@ -41,11 +41,11 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: tcp-4505
-              containerPort: {{ .Values.service.port }}
+            - name: tcp-pubsub
+              containerPort: {{ .Values.service.pubsub.port }}
               protocol: TCP
-            - name: tcp-4506
-              containerPort: {{ .Values.service.port }}
+            - name: tcp-target
+              containerPort: {{ .Values.service.target.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
