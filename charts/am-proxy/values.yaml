@@ -45,7 +45,7 @@ configmap:
 
     [k3s.limix.com]
     type = http
-    local_ip = 192.168.3.38
+    local_ip = salt-master
     local_port = 8181
     custom_domains = k3s.limix.com
 
