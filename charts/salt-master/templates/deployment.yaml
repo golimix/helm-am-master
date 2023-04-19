@@ -34,6 +34,10 @@ spec:
             items:
               - key: master
                 path: master
+        # TODO 这里可以考虑把sqlite更换为mysql之类的数据库
+        - name: volume-am-master-database
+          persistentVolumeClaim:
+            claimName: volume-am-master-database
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -64,6 +68,10 @@ spec:
             - name: volume-{{ include "helm-starter-base.fullname" . }}-config
               mountPath: "/etc/salt/master"
               subPath: master
+              readOnly: true
+            - name: volume-am-master-database
+              #  TODO 替换掉不需要关注的 /iflytek
+              mountPath: "/iflytek/server/master"
               readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
