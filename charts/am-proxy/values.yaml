@@ -42,11 +42,11 @@ configmap:
     server_addr = 47.92.78.18
     server_port = 7000
 
-    [k3s.limix.com]
+    [limix.limix.com]
     type = http
     local_ip = salt-master
     local_port = 8181
-    custom_domains = k3s.limix.com
+    custom_domains = limix.limix.com
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
