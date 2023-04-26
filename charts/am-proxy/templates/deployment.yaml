@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: volume-{{ include "helm-starter-base.fullname" . }}-config
           configMap:
-            name: {{ include "helm-starter-base.fullname" . }}        
+            name: {{ include "helm-starter-base.fullname" . }}-config
             items:
               - key: frpc
                 path: frpc.ini
