@@ -59,7 +59,7 @@ configmap:
        token: 8ed1c72682aedfb13ac048d736bf553c901f7c45
        localpath: /limix/data/master/git
      salt:
-       url: http://192.168.3.38:8181
+       url: http://192.168.0.245:8181
        username: root
        password: root
        eauth: auto
