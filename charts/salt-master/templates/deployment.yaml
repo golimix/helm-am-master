@@ -38,6 +38,9 @@ spec:
         - name: volume-am-master-database
           persistentVolumeClaim:
             claimName: volume-am-master-database
+        - name: volume-etc-salt-pki
+          persistentVolumeClaim:
+            claimName: volume-etc-salt-master-pki
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -80,8 +83,13 @@ spec:
               subPath: master
               readOnly: true
             - name: volume-am-master-database
-              #  TODO 替换掉不需要关注的 /iflytek
               mountPath: "/iflytek/server/master"
+              readOnly: true
+            - name: volume-salt-master-database
+              mountPath: "/iflytek/server/master"
+              readOnly: true
+            - name: volume-etc-salt-pki
+              mountPath: "/etc/salt/pki"
               readOnly: true
       {{- with .Values.nodeSelector }}
       nodeSelector:
