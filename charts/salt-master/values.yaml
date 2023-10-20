@@ -123,3 +123,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+persistence:
+  annotations: {}
+  accessMode: ReadWriteOnce
+  size: 10Mi
+  storageClass: "-"
