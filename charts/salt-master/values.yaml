@@ -125,7 +125,8 @@ tolerations: []
 affinity: {}
 
 persistence:
-  annotations: {}
+  annotations:
+    helm.sh/resource-policy: keep  
   accessMode: ReadWriteOnce
   size: 10Mi
-  storageClass: "-"
+  storageClass: "local-path"

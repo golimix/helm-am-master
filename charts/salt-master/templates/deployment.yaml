@@ -27,6 +27,7 @@ spec:
       serviceAccountName: {{ include "helm-starter-base.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      hostname: salt-master-host
       volumes:
         - name: volume-{{ include "helm-starter-base.fullname" . }}-config
           configMap:
@@ -40,7 +41,7 @@ spec:
             claimName: volume-am-master-database
         - name: volume-etc-salt-pki
           persistentVolumeClaim:
-            claimName: volume-etc-salt-master-pki
+            claimName: volume-etc-salt-pki
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -90,7 +91,7 @@ spec:
               readOnly: true
             - name: volume-etc-salt-pki
               mountPath: "/etc/salt/pki"
-              readOnly: true
+              readOnly: false
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
